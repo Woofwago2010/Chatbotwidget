@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Chat Widget</title>
+  <style>
+    /* Your custom floating button */
+    #customChatButton {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(to right, #ff8c00, #ff2e63);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    /* Optionally hide default Voiceflow launcher */
+    .voiceflow-launcher {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Floating Button -->
+<button id="customChatButton">💬</button>
+
+<!-- Voiceflow Embed -->
+<script>
+  window.voiceflow = window.voiceflow || {};
+  window.voiceflow.config = {
+    verify: { projectID: "6838755aa59bb541771753ab" },
+    url: "https://general-runtime.voiceflow.com",
+  };
+</script>
+<script src="https://cdn.voiceflow.com/widget/bundle.mjs" type="module"></script>
+
+<!-- JavaScript to open chat on click -->
+<script>
+  document.getElementById('customChatButton').addEventListener('click', () => {
+    const iframe = document.querySelector('iframe[src*="voiceflow"]');
+    if (iframe) iframe.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
